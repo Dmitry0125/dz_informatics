@@ -2,18 +2,34 @@
 n = int(input())
 ch = 2
 zn = 1
-s = ch/zn
-for i in range(2,n+1):
-    ch *= 2*i
-    zn *= 2*i-1
-    s += ch/zn
+s = ch / zn
+for i in range(2, n + 1):
+    ch *= 2 * i
+    zn *= 2 * i - 1
+    s += ch / zn
 print(s)
+
 # №2
+def bank(y, s, s1):  # высчитывание по одному году
+    y += 1
+    s1 = s * (p / 100) + s  # сумма под конец года
+    return (y, s1, s)
+
+
+s = int(input())  # кол-во рублей у Васи сначала
+s1 = int(input())  # цель Васи (ограничение в while)
+p = int(input())  # годовой процент в банке
+y = 0
+print(' Год  Начало года  Конец года')
+while s < s1:
+    y, s, d = bank(y, s,0)  # s1 -> s (сумма под конец года переностится на начало года, а сумма с начала года записывается в независиммую переменную s)
+    print(f' {y:>3d}   {d:>10.2f}  {s:>10.2f}')
+    # print(f' {y:_>3d}   {d:_>10.2f}  {s:_>10.2f}') # для возмущения, что приходится высчитывать пробелы, иначе таблица плывёт
 
 # №3
-n = str(sum(list(map(int,input()))))
-# map(int,input()) - строку превратили в массив с элементами строки типа целого числа
-while len(n)>1:
-    n = str(sum(list(map(int,n))))
+n = str(sum(list(map(int, input()))))
+# map(int, input()) - строку превратили в массив с элементами строки типа целого числа
+while len(n) > 1:
+    n = str(sum(list(map(int, n))))
 print(n)
 
